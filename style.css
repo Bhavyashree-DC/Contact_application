@@ -5,19 +5,22 @@
 }
 .container{
     position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
     width:1298px;
     height: calc(100vh - 40px);
     background-color: white;
     border: 1px;
     margin-left: 30px;
 }
-.left_container{
+.list_container{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 850px;
+    height:880px;
     width:34%;
     background-color: rgb(218, 247, 247);
     border-radius: 20px;
@@ -32,7 +35,9 @@
     border:0px;
     padding:8px;
     margin: 20px 20px 0px 35px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
+    text-align: center;
 }
 input{
     border: 0px;
@@ -80,7 +85,7 @@ input{
   ul li {
     display: flex;
     align-items: center;
-    padding: 11px;
+    padding: 10px;
     margin-left: 20px;
     font-size: 1.2rem;
     font-weight: 400;
@@ -94,13 +99,13 @@ input{
   }
  
 .contact-list .add-contact{
-    font-size: 3rem;
+    font-size: 3.3rem;
     margin-left: 350px; 
     cursor: pointer;
 }
 .contact_footer{
     width: 440px;
-    height: 60px;
+    height: 85px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -121,4 +126,199 @@ input{
     font-size: 1.8rem;
     margin-right: 30px;
     cursor: pointer;
+}
+.contact_container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:880px;
+    width:50%;
+    background-color: rgb(218, 247, 247);
+    border-radius: 20px;
+}
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    margin-top: 10px;
+    padding:20px;
+}
+.details .menu{
+    font-size: 2rem;
+    color: black;
+    margin:10px 30px;
+}
+.details .star-icon{
+    font-size: 2rem;
+    margin:10px 60px;
+    cursor: pointer;
+}
+.details .back_arrow{
+    font-size: 2rem;
+    margin:10px 50px 10px 30px;
+    cursor: pointer;
+}
+.display_image{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 30px;
+}
+.display_image img{ 
+    margin-left: 28px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+h3{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+hr{
+    border: none;
+    height: 2px;
+    background-color: black;
+    margin: 10px 0;
+}
+.connect_details {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.connect .connect_details .phone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.connect .connect_details .phone h5 {
+    margin-top: 5px;
+    font-size: 1.2rem; 
+}
+.connect .connect_details .message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.connect .connect_details .message ion-icon{
+    font-size: 2rem;
+}
+.connect .connect_details .message h5 {
+    margin-top: 5px;
+    font-size: 1rem; 
+}
+
+.connect .connect_details .video{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.connect .connect_details .video ion-icon{
+    font-size: 2rem;
+}
+.connect .connect_details .video h5 {
+    margin-top: 5px;
+    font-size: 1rem; 
+}
+
+.connect .connect_details .mail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.connect .connect_details .mail ion-icon{
+    font-size: 2rem;
+}
+.connect .connect_details .mail h5 {
+    margin-top: 5px;
+    font-size: 1rem; 
+}
+.connect .icons ion-icon {
+    margin:45px 25px 10px 25px;
+    font-size: 1.7rem;
+    padding: 20px;
+    cursor: pointer;
+    background-color: rgb(155, 230, 234);;
+    width: 25px;
+    height:25px;
+    border-radius: 50%;
+}
+.contact{
+    display: block;
+}
+.contact ion-icon{
+    padding:10px;
+    margin:20px 40px 5px 40px;
+    font-size: 1.8rem;
+    background-color:rgb(155, 230, 234);;
+    width: 30px;
+    height:30px;
+    border-radius: 50%;
+}
+
+.contact .whatsapp{
+    display: flex;
+    align-items: center;
+}
+.contact .call ion-icon{
+    font-size: 1.5rem;
+}
+
+/* Style for the contact method information */
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contact-methods > div {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.contact-methods ion-icon {
+    font-size: 2.1rem;
+    margin-bottom: 5px;
+}
+
+.contact-methods h5 {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.contact-methods h6 {
+    font-size: 0.9rem;
+}
+
+/* Style for the contact icons */
+.connect_details .icons .phone,
+.connect_details .icons .message,
+.connect_details .icons .video,
+.connect_details .icons .mail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.connect_details .icons .phone:hover,
+.connect_details .icons .message:hover,
+.connect_details .icons .video:hover,
+.connect_details .icons .mail:hover {
+    background-color: #eee; /* Add a hover effect */
 }

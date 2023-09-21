@@ -7,44 +7,54 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<div>
+<body>
     <div class="container">
-        <div class="left_container">
+        <div class="list_container">
             <div class="search">
                 <ion-icon class='menu'name="menu-outline"></ion-icon>
-                <input type="search" placeholder="Type to search">
+                <input type="search" placeholder="Search">
                 <ion-icon class="search_bar" name="search-outline"></ion-icon>
             </div>
             <div class="contact-list">
                <div class="contact-group">
                     <div class="alphabet">A</div>
                        <ul>
-                          <li><img src="./Images/arya.jpg">Arya</li>
+                           <li onclick="showContactDetails('Arya')">
+                               <img src="./Images/arya.jpg">Arya
+                           </li>
                        </ul>
                 </div>
 
                 <div class="contact-group">
                     <div class="alphabet">B</div>
                        <ul>
-                           <li><img src="./Images/bhavish.jpeg">Bhavish</li>
+                            <li onclick="showContactDetails('Bhavish')">
+                                <img src="./Images/bhavish.jpeg">Bhavish
+                            </li>
                        </ul>
                 </div>
                 <div class="contact-group">
                     <div class="alphabet">C</div>
                        <ul>
-                           <li><img src="./Images/charan.jpg">Charan</li>
+                            <li onclick="showContactDetails('Charan')">
+                                <img src="./Images/charan.jpg">Charan
+                            </li>
                         </ul>
                 </div>
                 <div class="contact-group">
                     <div class="alphabet">D</div>
                         <ul>
-                           <li><img src="./Images/divya.jpg">Divya</li>
+                            <li onclick="showContactDetails('Divya')">
+                                <img src="./Images/divya.jpg">Divya
+                            </li>
                         </ul>                 
                 </div>
                 <div class="contact-group">
                     <div class="alphabet">H</div>
                        <ul>
-                           <li><img src="./Images/harshi.jpg">Harshitha</li>
+                            <li onclick="showContactDetails('Harshitha')">
+                                <img src="./Images/harshi.jpg">Harshitha
+                            </li>
                         </ul>
                 </div>
                 <ion-icon class="add-contact" name="add-circle"></ion-icon>
@@ -53,8 +63,52 @@
                 <ion-icon class="person" name="person"></ion-icon>
                 <ion-icon class="star-icon" name="star"></ion-icon> 
                 <ion-icon class="people" name="people"></ion-icon>
+             </div>
+        </div> 
+
+       
+    <div class="contact_container" style="display: none;">
+        <div class="details">
+            <ion-icon class='back_arrow' name="chevron-back"></ion-icon>
+            <ion-icon class="star-icon" name="star"></ion-icon>
+            <ion-icon class='menu' name="menu"></ion-icon>
+        </div>
+
+        <div class="display_image">
+            <img src="./Images/arya.jpg">
+            <h3>Arya</h3>
+        </div>
+
+        <div class="connect">
+            <div class="connect_details icons">
+                <div class="phone">
+                     <ion-icon name="call"></ion-icon>
+                     <h5>Call</h5>
+                 </div>
+                 <div class="message">
+                     <ion-icon name="chatbubble-ellipses"></ion-icon>
+                     <h5>Message</h5>
+                 </div>
+                 
+                 <div class="video">
+                     <ion-icon name="videocam"></ion-icon>
+                     <h5>Video</h5>
+                 </div>
+             
+                 <div class="mail">
+                     <ion-icon name="mail"></ion-icon>
+                     <h5>Mail</h5>
+                 </div>
+
+                 <div class="contact-details">
+                    <p class="contact-number"></p>
+                    <p class="whatsapp-number"></p>
+                    <p class="email-address"></p>
+                </div>
             </div>
         </div>
-    </div>
+ 
+
+    <script src="Script.js"></script>
 </body>
 </html>
