@@ -16,11 +16,15 @@
                 <ion-icon class="search_bar" name="search-outline"></ion-icon>
             </div>
             <div class="contact-list">
+                <div class="head">
+                    <h3>All Contacts</h3>
+                </div>
+
                <div class="contact-group">
                     <div class="alphabet">A</div>
                        <ul>
                            <li onclick="showContactDetails('Arya')">
-                               <img src="./Images/arya.jpg">Arya
+                               <img src="./images/arya.jpg">Arya
                            </li>
                        </ul>
                 </div>
@@ -29,7 +33,7 @@
                     <div class="alphabet">B</div>
                        <ul>
                             <li onclick="showContactDetails('Bhavish')">
-                                <img src="./Images/bhavish.jpeg">Bhavish
+                                <img src="./images/Bhavish.webp">Bhavish
                             </li>
                        </ul>
                 </div>
@@ -37,7 +41,7 @@
                     <div class="alphabet">C</div>
                        <ul>
                             <li onclick="showContactDetails('Charan')">
-                                <img src="./Images/charan.jpg">Charan
+                                <img src="./images/charan.jpg">Charan
                             </li>
                         </ul>
                 </div>
@@ -45,7 +49,7 @@
                     <div class="alphabet">D</div>
                         <ul>
                             <li onclick="showContactDetails('Divya')">
-                                <img src="./Images/divya.jpg">Divya
+                                <img src="./images/divya1.jpg">Divya
                             </li>
                         </ul>                 
                 </div>
@@ -53,17 +57,37 @@
                     <div class="alphabet">H</div>
                        <ul>
                             <li onclick="showContactDetails('Harshitha')">
-                                <img src="./Images/harshi.jpg">Harshitha
+                                <img src="./images/harshitha.jpg">Harshitha
                             </li>
                         </ul>
                 </div>
-                <ion-icon class="add-contact" name="add-circle"></ion-icon>
+                <ion-icon class="add-contact" name="add-circle" onclick="openAddContactForm()"></ion-icon>
+                <div id="addContactForm" style="display: none;">
+                   <form onsubmit="addContact(); return false;">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required><br>
+                        
+
+                        <label for="contactNumber">ContactNumber</label>
+                        <input type="text" id="contactNo" required><br>
+
+
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" required><br>
+
+                        <label for="whatsappNumber">whatsapp Number:</label>
+                        <input type="text" id="whatsapp" required><br>
+
+                        <button type="submit">ADD</button>
+                    </form>   
+                </div>
             </div>
+         </div>
             <div class="contact_footer">
                 <ion-icon class="person" name="person"></ion-icon>
                 <ion-icon class="star-icon" name="star"></ion-icon> 
                 <ion-icon class="people" name="people"></ion-icon>
-             </div>
+            </div>
         </div> 
 
        
@@ -79,7 +103,6 @@
             <h3>Arya</h3>
         </div>
 
-        <div class="connect">
             <div class="connect_details icons">
                 <div class="phone">
                      <ion-icon name="call"></ion-icon>
@@ -99,16 +122,12 @@
                      <ion-icon name="mail"></ion-icon>
                      <h5>Mail</h5>
                  </div>
+          </div>
 
-                 <div class="contact-details">
-                    <p class="contact-number"></p>
-                    <p class="whatsapp-number"></p>
-                    <p class="email-address"></p>
-                </div>
-            </div>
+        <div class="contact-details">
+            <p class="contact-number"></p>
+            <p class="email-address"></p>
         </div>
- 
-
-    <script src="Script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
