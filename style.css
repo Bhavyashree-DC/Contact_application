@@ -18,7 +18,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height:100vh;
+    height:960px;
+    /* overflow-y: auto; */
     width:28%;
     background-color: rgb(218, 247, 247);
     border-radius: 20px;
@@ -115,6 +116,58 @@ input{
     margin-left: 450px; 
     cursor: pointer;
 }
+.form-container {
+    position:absolute;
+    top:20px;
+    left:40px;
+    height: auto;
+    width: 450px;
+    margin: 0 auto;
+    display: none;
+    z-index: 1;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-close-icon{
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 360px;
+    cursor: pointer;
+}
+.form-label {
+    margin-top: 20px;
+    display: block;
+    margin: 30px;
+    font-weight: bold;
+}
+
+.form-input {
+    width: 50%;
+    padding: 10px;
+    margin: 15px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-submit {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.form-submit:hover {
+    background-color: #0056b3;
+}
+
 .contact_footer{
     width: 540px;
     height: 75px;
@@ -144,7 +197,6 @@ input{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height:100vh;
     width:100%;
     background-color: rgb(218, 247, 247);
     border-radius: 20px;
@@ -336,26 +388,26 @@ hr{
 
 .contact-details  .contact-number{
     display: block;
-    margin: 70px 70px 0px 170px;
+    margin: 70px 70px 0px 600px;
     font-size: 1.1rem;
     font-weight: bold;
 }
 
 .contact-details  .email-address{
     display: block;
-    margin: 70px 70px 0px 170px;
+    margin: 70px 70px 0px 600px;
     font-size: 1.1rem;
     font-weight: bold;
 }
 .contact-details  .video-call{
     display: block;
-    margin: 70px 70px 0px 170px;
+    margin: 70px 70px 0px 600px;
     font-size: 1.1rem;
     font-weight: bold;
 }
 .contact-details  .whatsapp-number{
     display: block;
-    margin: 70px 70px 0px 170px;
+    margin: 70px 70px 0px 600px;
     font-size: 1.1rem;
     font-weight: bold;
 }

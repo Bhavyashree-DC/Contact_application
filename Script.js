@@ -68,7 +68,7 @@ function showContactDetails(name) {
     
             <div class="connect_details icons">
                 <div class="phone">
-                    <ion-icon name="call"onclick="displayContactNumber('${contact.contactNumber}')"></ion-icon>
+                    <ion-icon name="call" onclick="displayContactNumber('${contact.contactNumber}')"></ion-icon>
                     <h5>Call</h5>
                 </div>
                 <div class="message">
@@ -181,33 +181,17 @@ function toggleDetails(){
 
 function openAddContactForm(){
     const addContactForm = document.getElementById("addContactForm");
-    addContactForm.style.display = "block";
+
+    // Toggle the form's display
+    if (addContactForm.style.display === "block") {
+        addContactForm.style.display = "none";
+    } else {
+        addContactForm.style.display = "block";
+    }
 }
 
-function addContact(){
-    const nameInput = document.getElementById("name");
-    const contactNoInput =  document.getElementById('');
-    const emailInput  = document.getElementById('email');
-    const whatsappNoInput = document.getElementById('');
-
-    const name = nameInput.value;
-    const contactNo = contactNoInput.value;
-    const email = emailInput.value;
-    const whatsappNo = whatsappNoInput.value;
-
-    const newContact = {
-        name : name,
-        contactNumber:contactNo,
-        EmailAddress:email,
-        whatsappNo : whatsappNo,
-
-    };
-
-    contacts.push(newContact);
-
-    // for reseting the form & hiding it 
-    const addContactForm = document.getElementById('addContactForm');
-    addContactForm.style.display = none;
-    addContactForm.reset();
-
+   
+function closeAddContactForm(){
+    const ContactForm = document.getElementById('addContactForm');
+    ContactForm.style.display = 'none';
 }
