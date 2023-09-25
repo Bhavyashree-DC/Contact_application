@@ -9,9 +9,10 @@
     flex-direction: row;
     gap: 1px;
     width:100%;
-    height: calc(100vh - 40px);
+    height: calc(100vh - 30px);
     background-color: white;
     border: 1px;
+    margin-top: 15px;
 }
 .list_container{
     display: flex;
@@ -19,16 +20,16 @@
     justify-content: flex-start;
     align-items: flex-start;
     height:960px;
-    /* overflow-y: auto; */
-    width:28%;
+    width:23%;
     background-color: rgb(218, 247, 247);
     border-radius: 20px;
+    overflow: hidden;
 }
 .search{
     display: flex;
     justify-content: center;
     align-items: center;
-    width:470px;
+    width:420px;
     height: 70px;
     background-color: #fff;
     border:0px;
@@ -58,11 +59,18 @@ input{
     margin-right: 10px;
     cursor: pointer;
 }
+
+.contact-list-container{
+    height: calc(100%-70px);
+    overflow-y: auto;
+}
+
 .contact-list {
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
   }
+
   .head{
     font-size: 1rem;
     font-weight: bold;
@@ -81,7 +89,7 @@ input{
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    margin-left: 490px;
+    margin-left: 390px;
     width: 37px;
     height: 37px;
     border-radius: 50%;
@@ -101,11 +109,13 @@ input{
     margin-left: 40px;
     font-size: 1.2rem;
     font-weight: 400;
+    cursor: pointer;
   }
   
   ul li img {
     width: 70px;
     height: 70px;
+    background-color: aliceblue;
     border-radius: 50%;
     margin-right: 10px;
     cursor: pointer;
@@ -113,7 +123,7 @@ input{
  
 .contact-list .add-contact{
     font-size: 3.5rem;
-    margin-left: 450px; 
+    margin-left: 370px; 
     cursor: pointer;
 }
 .form-container {
@@ -139,17 +149,17 @@ input{
     margin-left: 360px;
     cursor: pointer;
 }
+
 .form-label {
-    margin-top: 20px;
     display: block;
     margin: 30px;
     font-weight: bold;
 }
 
 .form-input {
-    width: 50%;
+    width: 70%;
     padding: 10px;
-    margin: 15px 20px;
+    margin: 0px 10px 5px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -160,6 +170,7 @@ input{
     color: #fff;
     border: none;
     padding: 10px 20px;
+    margin-top: 20px;
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
@@ -197,7 +208,7 @@ input{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:100%;
+    width: calc(77% - 2px);
     background-color: rgb(218, 247, 247);
     border-radius: 20px;
 }
@@ -275,6 +286,43 @@ hr{
     margin: 10px;
 }
 
+.connect_details .message ion-icon{
+    font-size: 2rem;
+}
+
+.connect_details .message h5 {
+    margin-top: 5px;
+    font-size: 1rem; 
+}
+
+
+.connect_details .mail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+ .connect_details .mail ion-icon{
+    font-size: 2rem;
+}
+.connect_details .mail h5 {
+    margin-top: 5px;
+    font-size: 1rem; 
+}
+.icons ion-icon {
+    margin:45px 25px 10px 25px;
+    font-size: 1.7rem;
+    padding: 20px;
+    cursor: pointer;
+    background-color: rgb(155, 230, 234);;
+    width: 25px;
+    height:25px;
+    border-radius: 50%;
+}
+.connect_details .active-icon {
+    background-color: #4f96e2;
+}
 
 .details .dropdown-menu {
     margin-top: 5px;
@@ -301,56 +349,9 @@ hr{
 
 .menu-container .close-icon{
     display: none;
-    margin: 10px 5px 0px 10px;
+    margin: 10px 5px 0px 170px;
     font-size:2.1rem;
 
-}
-.connect_details .message ion-icon{
-    font-size: 2rem;
-}
-
-.connect_details .message h5 {
-    margin-top: 5px;
-    font-size: 1rem; 
-}
-
-.connect_details .video{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-}
-.connect_details .video ion-icon{
-    font-size: 2rem;
-}
-.connect_details .video h5 {
-    margin-top: 5px;
-    font-size: 1rem; 
-}
-
-.connect_details .mail{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-}
- .connect_details .mail ion-icon{
-    font-size: 2rem;
-}
-.connect_details .mail h5 {
-    margin-top: 5px;
-    font-size: 1rem; 
-}
-.icons ion-icon {
-    margin:45px 25px 10px 25px;
-    font-size: 1.7rem;
-    padding: 20px;
-    cursor: pointer;
-    background-color: rgb(155, 230, 234);;
-    width: 25px;
-    height:25px;
-    border-radius: 50%;
 }
 .contact{
     display: block;
@@ -377,14 +378,6 @@ hr{
     display: none;
 }
 
-.contact-details  .contact-number{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 90px 70px 10px 10px;
-    font-size: 1.3rem;
-    font-weight: bold;
-}
 
 .contact-details  .contact-number{
     display: block;
@@ -395,19 +388,14 @@ hr{
 
 .contact-details  .email-address{
     display: block;
-    margin: 70px 70px 0px 600px;
+    margin: 70px 70px 0px 640px;
     font-size: 1.1rem;
     font-weight: bold;
 }
-.contact-details  .video-call{
-    display: block;
-    margin: 70px 70px 0px 600px;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
+
 .contact-details  .whatsapp-number{
     display: block;
-    margin: 70px 70px 0px 600px;
+    margin: 70px 70px 0px 640px;
     font-size: 1.1rem;
     font-weight: bold;
 }

@@ -37,6 +37,15 @@ const contacts = [
     
 ];
 
+function intailizeContacts(){
+    const storedContacts = JSON.parse(localStorage.getItem('contacts'));
+
+    if (storedContacts && Array.isArray(storedContacts)) {
+        contacts.length = 0; // Clear the existing contacts array
+        contacts.push(...storedContacts); // Add stored contacts to the array
+    }
+}
+
 function showContactDetails(name) {
     const detailsContainer = document.querySelector('.contact_container');
     const contactContainer = document.querySelector('.contact-details');
@@ -100,10 +109,16 @@ function displayContactNumber(contactNumber) {
     activeIcon = 'phone';
 
     const icons = document.querySelectorAll('.connect_details ion-icon');
+
     icons.forEach((icon) => {
-        icon.classList.add('active-icon');
+        icon.classList.remove('active-icon');
     });
+
+    const phoneIcons = document.querySelector('.connect_details .phone ion-icon');
+    phoneIcons.classList.add('active-icon');
+
 }
+
 
 function displayMessage(message){
     const messageElement = document.querySelector('.contact-details .whatsapp-number');
@@ -113,22 +128,13 @@ function displayMessage(message){
     activeIcon = 'message';
 
     const icons = document.querySelectorAll('.connect_details ion-icon');
-    icons.forEach((icon) => {
-        icon.classList.add('active-icon');
-    });
-}
 
-function displayVideoCall(video){
-    const videoElement = document.querySelector('.contact-details .video-call');
-    videoElement.textContent = `Video-call: ${video}`;
-    
-    clearOtherValues(videoElement);
-    activeIcon = "video";
-
-    const icons = document.querySelectorAll('.connect_details ion-icon');
     icons.forEach((icon) => {
-        icon.classList.add('active-icon');
+        icon.classList.remove('.active-icon');
     });
+
+     const messageIcon = document.querySelector('.contact-details .message ion-icon');
+     messageIcon.classList.add('.active-icon');
 }
 
 function displayEmailAddress(email) {
@@ -139,9 +145,13 @@ function displayEmailAddress(email) {
     activeIcon = 'mail';
 
     const icons = document.querySelectorAll('.connect_details ion-icon');
+
     icons.forEach((icon) => {
-        icon.classList.add('active-icon');
+        icon.classList.remove('active-icon');
     });
+
+    const emailIcon = document.querySelector('.connect_details .mail ion-icon');
+    emailIcon.classList.add('active-icon');
 }
 
 function clearOtherValues(activeElement){
@@ -190,8 +200,78 @@ function openAddContactForm(){
     }
 }
 
+function updateContactList() {
+    const contactList = document.querySelector('.contact-list');
+    
+    // Clear the existing contact list
+    contactList.innerHTML = '';
+
+    // Group contacts by alphabet letter
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    for (const letter of alphabet) {
+        const contactsStartingWithLetter = contacts.filter((contact) =>
+            contact.name.toUpperCase().startsWith(letter)
+        );
+
+        if (contactsStartingWithLetter.length > 0) {
+            const contactGroup = document.createElement('div');
+            contactGroup.className = 'contact-group';
+            contactGroup.setAttribute('data-letter', letter);
+
+            const alphabetDiv = document.createElement('div');
+            alphabetDiv.className = 'alphabet';
+            alphabetDiv.textContent = letter;
+
+            const ul = document.createElement('ul');
+            ul.innerHTML = contactsStartingWithLetter.map((contact) => `
+                <li onclick="showContactDetails('${contact.name}')">
+                    <img src="${contact.imageSrc}">${contact.name}
+                </li>
+            `).join('');
+
+            contactGroup.appendChild(alphabetDiv);
+            contactGroup.appendChild(ul);
+            contactList.appendChild(contactGroup);
+        }
+    }
+}
+
+function addNewContact(){
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const contactNumber = document.getElementById("contactNo").value;
+    const whatsappNumber =document.getElementById("whatsappNo").value;
+    const imageSrc = document.getElementById("imageSrc").value.trim();
+
+
+    // Check if the imageSrc is empty, and if so, set a default image source
+    const defaultImageSrc = `https://placehold.it/100x100/555555/ffffff?text=${name.substring(0, 2).toUpperCase()}`;
+    const newImageSrc = imageSrc ? imageSrc : defaultImageSrc;
+
+    const newContact = {
+        name: name,
+        email: email,
+        contactNumber: contactNumber,
+        whatsappNumber: whatsappNumber,
+        imageSrc: newImageSrc, // Use the generated image source
+    };
+
    
+    contacts.push(newContact);
+
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+    
+    updateContactList();
+
+    closeAddContactForm();
+}
+
+
 function closeAddContactForm(){
     const ContactForm = document.getElementById('addContactForm');
     ContactForm.style.display = 'none';
-}
+ }
+
+ window.addEventListener('load', intailizeContacts);
