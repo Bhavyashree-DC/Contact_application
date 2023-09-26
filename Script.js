@@ -1,50 +1,4 @@
-const contacts = [
-    {
-        name: 'Arya',
-        imageSrc: './images/arya.jpg',
-        contactNumber: '6362781093',
-        email: 'arya@gmail.com',
-        whatsappNumber: '908765463561'
-    },
-    {
-        name: 'Bhavish',
-        imageSrc: './images/Bhavish.webp',
-        contactNumber: '1234567890',
-        email: 'bhavish@gmail.com',
-        whatsappNumber: '654678642909'
-    },
-    {
-      name:'Charan',
-      imageSrc: './images/charan.jpg',
-      contactNumber: '7896546923',
-      email: 'charan@yahoo.com',
-      whatsappNumber: '654678642909'
-    },
-    {
-        name:'Divya',
-        imageSrc: './images/divya1.jpg',
-        contactNumber: '7676041082',
-        email: 'divya@gmail.com',
-        whatsappNumber: '654678642909'
-    },
-    {
-        name:'Harshitha',
-        imageSrc: './images/harshitha.jpg',
-        contactNumber: '6568983492',
-        email: 'harshitha@gmail.com',
-        whatsappNumber: '654678642909' 
-    }
-    
-];
-
-function intailizeContacts(){
-    const storedContacts = JSON.parse(localStorage.getItem('contacts'));
-
-    if (storedContacts && Array.isArray(storedContacts)) {
-        contacts.length = 0; // Clear the existing contacts array
-        contacts.push(...storedContacts); // Add stored contacts to the array
-    }
-}
+const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
 
 function showContactDetails(name) {
     const detailsContainer = document.querySelector('.contact_container');
@@ -54,14 +8,14 @@ function showContactDetails(name) {
 
     detailsContainer.innerHTML = `
             <div class="details">
-                <ion-icon class='back_arrow' name="chevron-back" onclick="toggleDetails()"></ion-icon>
+            <ion-icon name="arrow-back-outline" class="back-arrow" onclick="toggleDetails()"></ion-icon>
                 <div  class = "menu-container" onclick="toogleDropdownMenu()">
                    <ion-icon class='menu' name="menu"></ion-icon>
                  
                    <div class = "dropdown-menu" id="dropdownMenu">
                       <ul>
                            <ion-icon class='close-icon' name="close-circle"></ion-icon>
-                            <li><a href="#">Delete</a></li>
+                            <li><a href="#" onclick="deleteContact('${contact.name}')">Delete</a></li>
                             <li><a href="#">Share</a></li>
                             <li><a href="#">Block</a></li>
                       </ul>
@@ -274,4 +228,62 @@ function closeAddContactForm(){
     ContactForm.style.display = 'none';
  }
 
- window.addEventListener('load', intailizeContacts);
+
+ function filterContacts() {
+    const searchInput = document.getElementById('searchInput');
+    const filter = searchInput.value.toLowerCase();
+
+    const contactGroups = document.querySelectorAll('.contact-group');
+
+    let noResutFound = true;
+
+    contactGroups.forEach(group => {
+        const contactItems = group.querySelectorAll('ul li'); // Select contact items within the current group
+        let hasVisibleContacts = false; // track if any item in the group is visible 
+
+        contactItems.forEach(item => {
+            const contactName = item.textContent.toLowerCase();
+            if (contactName.includes(filter)) {
+                item.style.display = "block"; // show item matches with search query
+                hasVisibleContacts = true;
+                noResutFound = false;
+            } else {
+                item.style.display = "none";
+            }
+        });
+
+        const alphabetDiv = group.querySelector('.alphabet');
+        if (hasVisibleContacts || filter === '') {
+            alphabetDiv.style.display = 'block';
+        } else {
+            alphabetDiv.style.display = 'none';
+        }
+    });
+
+    const noResutElement = document.getElementById('noResultsFound');
+    if(noResutFound){
+        noResutElement.style.display = 'block';
+    }
+    else{
+        noResutElement.style.display = 'none';
+    }
+}
+
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', filterContacts);
+
+
+function deleteContact(name){
+    const index = contacts.findIndex((c) => c.name === name);
+
+    if(index !== -1){
+        contacts.splice(index, 1); // remove the contact from the array
+    
+        localStorage.setItem('contacts' ,JSON.stringify(contacts)); // updating local storage
+
+        updateContactList(); // update contact-list 
+            
+        toggleDetails();
+    }
+}
+ window.addEventListener('load', updateContactList);

@@ -12,7 +12,7 @@
         <div class="list_container">
             <div class="search">
                 <ion-icon class='menu'name="menu-outline"></ion-icon>
-                <input type="search" placeholder="Search">
+                <input type="search" id = "searchInput" placeholder="Search">
                 <ion-icon class="search_bar" name="search-outline"></ion-icon>
             </div>
             <div class="contact-list-container">
@@ -38,7 +38,7 @@
                                 </li>
                            </ul>
                     </div>
-                    <div class="contact-group" data-letter="A">
+                    <div class="contact-group" data-letter="C">
                         <div class="alphabet">C</div>
                            <ul>
                                 <li onclick="showContactDetails('Charan')">
@@ -47,7 +47,7 @@
                             </ul>
                     </div>
 
-                    <div class="contact-group" data-letter="A">
+                    <div class="contact-group" data-letter="D">
                         <div class="alphabet">D</div>
                             <ul>
                                 <li onclick="showContactDetails('Divya')">
@@ -56,7 +56,7 @@
                             </ul>                 
                     </div>
 
-                    <div class="contact-group">
+                    <div class="contact-group" data-letter="H">
                         <div class="alphabet">H</div>
                            <ul>
                                 <li onclick="showContactDetails('Harshitha')">
@@ -64,12 +64,21 @@
                                 </li>
                             </ul>
                     </div>
- 
-                   <ion-icon class="add-contact" name="add-circle" onclick="openAddContactForm()"></ion-icon>
+        
+                </div>
 
-                </div>    
+                <div class="add-icon-container">
+                    <ion-icon name="add-circle-sharp" onclick="openAddContactForm()"></ion-icon> 
+                </div>
+ 
+                <div class ="noResult" id="noResultsFound" style="display: none;">
+                    No results found.
+                </div>
+
             </div>       
         </div>
+
+
                 <div id="addContactForm" class="form-container" style="display: none;">
                     <form onsubmit="addNewContact(); return false;">
                     
@@ -85,7 +94,7 @@
                             <label for="email" class="form-label">Email:</label>
                             <input type="text" id="email" class="form-input" required><br>
 
-                            <label for="whatsapprNo" class="form-label">whatsapp Number:</label>
+                            <label for="whatsappNo" class="form-label">whatsapp Number:</label>
                             <input type="text" id="whatsappNo" class="form-input" required><br>
                         
                             <label for="imageSrc" class="form-label">Image Source:</label>
@@ -95,7 +104,7 @@
 
                     </form>   
                 </div>
-        <!-- </div> -->
+      
             
             
         
