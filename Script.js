@@ -9,9 +9,9 @@ function showContactDetails(name) {
     detailsContainer.innerHTML = `
             <div class="details">
             <ion-icon name="arrow-back-outline" class="back-arrow" onclick="toggleDetails()"></ion-icon>
+
                 <div  class = "menu-container" onclick="toogleDropdownMenu()">
                    <ion-icon class='menu' name="menu"></ion-icon>
-                 
                    <div class = "dropdown-menu" id="dropdownMenu">
                       <ul>
                            <ion-icon class='close-icon' name="close-circle"></ion-icon>
@@ -47,9 +47,12 @@ function showContactDetails(name) {
                     <p class="contact-number"></p>
                     <p class="whatsapp-number"></p>
                     <p class="email-address"></p>
-            
                 </div>
-    `;
+            
+                <div class="edit-container">
+                    <ion-icon class='edit' name="create" onclick="editContact('${contact.name}')"></ion-icon>
+                </div>
+                `;
 
     detailsContainer.style.display = 'block';
     activeIcon = null;   // tract the current active icon
@@ -84,11 +87,11 @@ function displayMessage(message){
     const icons = document.querySelectorAll('.connect_details ion-icon');
 
     icons.forEach((icon) => {
-        icon.classList.remove('.active-icon');
+        icon.classList.remove('active-icon');
     });
 
      const messageIcon = document.querySelector('.contact-details .message ion-icon');
-     messageIcon.classList.add('.active-icon');
+     messageIcon.classList.add('active-icon');
 }
 
 function displayEmailAddress(email) {
@@ -219,17 +222,12 @@ function addNewContact(){
     
     updateContactList();
 
+    clearForm();
+
     closeAddContactForm();
 }
 
-
-function closeAddContactForm(){
-    const ContactForm = document.getElementById('addContactForm');
-    ContactForm.style.display = 'none';
- }
-
-
- function filterContacts() {
+function filterContacts() {
     const searchInput = document.getElementById('searchInput');
     const filter = searchInput.value.toLowerCase();
 
@@ -241,7 +239,7 @@ function closeAddContactForm(){
         const contactItems = group.querySelectorAll('ul li'); // Select contact items within the current group
         let hasVisibleContacts = false; // track if any item in the group is visible 
 
-        contactItems.forEach(item => {
+    contactItems.forEach(item => {
             const contactName = item.textContent.toLowerCase();
             if (contactName.includes(filter)) {
                 item.style.display = "block"; // show item matches with search query
@@ -272,6 +270,14 @@ function closeAddContactForm(){
 const searchInput = document.getElementById('searchInput');
 searchInput.addEventListener('input', filterContacts);
 
+function editContact(name){
+     
+    const contact = contacts.find((c) => c.name === name);
+
+    document.getElementById("name").value = contact.name;
+    
+    
+}
 
 function deleteContact(name){
     const index = contacts.findIndex((c) => c.name === name);
@@ -286,4 +292,18 @@ function deleteContact(name){
         toggleDetails();
     }
 }
+
+function clearForm(){
+    document.getElementById('name').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('contactNo').value = "";
+    document.getElementById('whatsappNo').value = "";
+    document.getElementById('imageSrc').value = "";
+
+}
+function closeAddContactForm(){
+    const ContactForm = document.getElementById('addContactForm');
+    ContactForm.style.display = 'none';
+ }
+
  window.addEventListener('load', updateContactList);

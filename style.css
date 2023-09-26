@@ -74,8 +74,9 @@ input{
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    max-height: 80vh; /* Example: 80% of the viewport height */
+    max-height: 80vh; 
     overflow-y: auto;
+    padding-left: 50px;
   }
 
   .head{
@@ -87,6 +88,7 @@ input{
   .contact-group {
     width: 100%; 
     margin-bottom: 10px;
+    min-height: 100px; 
   }
   
   .alphabet {
@@ -96,12 +98,13 @@ input{
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    margin-top: 40px;
     margin-left: 390px;
     width: 37px;
     height: 37px;
     border-radius: 50%;
     background-color: rgb(117, 214, 214);
-  }
+}
   
   ul {
     list-style: none;
@@ -399,4 +402,17 @@ hr{
     margin: 70px 70px 0px 640px;
     font-size: 1.1rem;
     font-weight: bold;
+}
+
+.edit-container{
+    position:absolute;
+    bottom: 30px;
+    right:5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.edit{
+  font-size: 3rem;
+  margin-right: 105px;
 }
