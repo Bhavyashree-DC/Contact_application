@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact_Application</title>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="list_container">
             <div class="search">
-                <ion-icon class='menu'name="menu-outline"></ion-icon>
-                <input type="search" id = "searchInput" placeholder="Search">
                 <ion-icon class="search_bar" name="search-outline"></ion-icon>
+                <input type="search" id = "searchInput" placeholder="Search">    
+            </div>
+            <div class="head">
+               <h4>All Contacts</h4> 
             </div>
             <div class="contact-list-container">
                 <div class="contact-list">
-                        <div class="head">
-                            <h3>All Contacts</h3>
-                        </div>
-<!-- 
+                   
+<!--                    
                     <div class="contact-group"  data-letter="A">
                         <div class="alphabet">A</div>
                             <ul>
@@ -80,7 +81,7 @@
 
 
                 <div id="addContactForm" class="form-container" style="display: none;">
-                    <form onsubmit="addNewContact(); return false;">
+                    <form onsubmit="submitContactForm(); return false;">
                     
                         <ion-icon class='add-close-icon' name="close-circle" onclick="closeAddContactForm()"></ion-icon>
 
@@ -138,6 +139,7 @@
             
             <div class="contact-details">
                 <p class="contact-number"></p>
+                <p class="whatsapp-number"></p>
                 <p class="email-address"></p>
             </div>
         </div>
