@@ -24,7 +24,6 @@
     background-color: #41436A;
     border-radius: 20px;
     overflow: hidden;
-    position: absolute;
 }
 .search{
     display: flex;
@@ -143,8 +142,7 @@
   }
  
 .add-icon-container{
-    position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     right: 20px;
     z-index: 2;
   }
@@ -153,7 +151,10 @@
     font-size: 3.8rem;
     color: #f7f7f7;
     cursor: pointer;
+    margin-left: 470px;
+    margin-bottom: 30px;
   }
+
 .form-container {
     position:absolute;
     top:20px;
@@ -227,6 +228,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 1;
     width: calc(75% - 2px);
     background-color:#41436A;
     border-radius: 20px;
@@ -276,7 +278,7 @@ h3{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 45px;
 }
  .connect_details .phone{
     display: flex;
@@ -393,7 +395,7 @@ h3{
     z-index: 100;
   
 }
-.connect_details .active-icon {
+.connect_details ion-icon.active-icon {
     background-color: #984063;
 }
 
@@ -401,7 +403,7 @@ h3{
     margin-top: 5px;
     display: none; 
     position: absolute;
-    width: 230px;
+    width: 260px;
     height: 310px;
     right: 10px;
     background-color: #fff;

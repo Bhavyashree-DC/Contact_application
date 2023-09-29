@@ -79,19 +79,16 @@ function showContactDetails(name) {
  
 }
 
-
-
 function displayContactInfo(methodName, value) {
 
-    console.log('Function called'); // Add this line
     const contactInfoElement = document.querySelector('.contact-details');
 
-    contactInfoElement.classList.add('show-background');
+    contactInfoElement.classList.add('show-background'); // add show-background class to selected contact information container
 
     // Clear existing content
     contactInfoElement.innerHTML = '';
 
-    // Create and add the header
+    // Create and add the header ele
     const header = document.createElement('p');
     header.textContent = 'Contact Info';
     header.style.fontSize = '30px'; 
@@ -225,18 +222,36 @@ function displayContactInfo(methodName, value) {
 function displayContactNumber(contactNumber) {
     clearContactInfo();
     displayContactInfo('Call', contactNumber); 
+    const iconElement = event.currentTarget; // retrieve the clicked icon element & gives refernce to clicked ele
+    setActiveIcon(iconElement); // update active icon
 }
 
 function displayMessage(message) {
     clearContactInfo();
     displayContactInfo('Message', message);
+    const iconElement = event.currentTarget; 
+    setActiveIcon(iconElement);
 }
 
 function displayEmailAddress(email) {
     clearContactInfo();
     displayContactInfo('Mail', email);
+    const iconElement = event.currentTarget; 
+    setActiveIcon(iconElement);
 }
 
+function setActiveIcon(iconElement) {
+    
+    if (activeIcon) { 
+        activeIcon.classList.remove('active-icon');  // Remove the 'active-icon' class from the previous active icon
+    }
+
+                                                
+    iconElement.classList.add('active-icon');    // Add the 'active-icon' class to the clicked icon
+
+    
+    activeIcon = iconElement; // Update the activeIcon variable 
+}
 
 function clearContactInfo() {
     const contactInfoElements = document.querySelectorAll('.contact-details');
@@ -289,13 +304,11 @@ function openAddContactForm() {
 
 function openEditContactForm(name) {
     const addContactForm = document.getElementById("addContactForm");
-    // const contactIndex = document.getElementById('contactIndex');
-
-
+    
     isEditMode = true;
 
-    const contact =contacts[contactIndex];
-    if (contact) {
+    const contact =contacts[contactIndex]; // retrieve contact object using index
+    if (contact) { // check  if contact object retrieved successfully
 
         const index = contacts.indexOf(contact);
         contactIndex = index;  
@@ -373,13 +386,14 @@ function submitContactForm(){
         if (contactIndex !== undefined) {
             contacts[contactIndex] = newContact;
             updateLocalStorage(); // Update localStorage after modifying the contacts array
+            alert("Contact edited successfully!");
         }
     }
     else{
         contacts.push(newContact);
-        updateLocalStorage(); //
+        updateLocalStorage(); 
+        alert("Contact added successfully!");
     }
-    
     
     updateContactList();
 
@@ -441,13 +455,18 @@ function deleteContact(name){
     const index = contacts.findIndex((c) => c.name === name);
 
     if(index !== -1){
-        contacts.splice(index, 1); // remove the contact from the array
-    
-        localStorage.setItem('contacts' ,JSON.stringify(contacts)); // updating local storage
 
-        updateContactList(); // update contact-list 
-            
-        toggleDetails();
+        const confirmation = confirm(`Are you  sure you want want to delete the contact "${name}"?`);
+
+        if(confirmation){
+            contacts.splice(index, 1); // remove the contact from the array
+        
+            localStorage.setItem('contacts' ,JSON.stringify(contacts)); // updating local storage
+
+            updateContactList(); // update contact-list 
+                
+            toggleDetails();
+        }
     }
 }
     
