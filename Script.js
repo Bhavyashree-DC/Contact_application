@@ -43,15 +43,15 @@ function showContactDetails(name) {
     
             <div class="connect_details icons">
                 <div class="phone">
-                    <ion-icon name="call" onclick="displayContactNumber('${contact.contactNumber}')"></ion-icon>
+                    <ion-icon name="call" class="toggle-icon" onclick="displayContactNumber('${contact.contactNumber}',this)"></ion-icon>
                     <h5>Call</h5>
                 </div>
                 <div class="message">
-                    <ion-icon name="chatbubble-ellipses" onclick="displayMessage('${contact.whatsappNumber}')"></ion-icon>
+                    <ion-icon name="chatbubble-ellipses" class="toggle-icon" onclick="displayMessage('${contact.whatsappNumber}',this)"></ion-icon>
                     <h5>Message</h5>
                 </div>
                 <div class="mail">
-                    <ion-icon name="mail" onclick="displayEmailAddress('${contact.email}')"></ion-icon>
+                    <ion-icon name="mail" class="toggle-icon" onclick="displayEmailAddress('${contact.email}',this)"></ion-icon>
                     <h5>Mail</h5>
                 </div>
             </div>
@@ -92,9 +92,10 @@ function displayContactInfo(methodName, value) {
     const header = document.createElement('p');
     header.textContent = 'Contact Info';
     header.style.fontSize = '30px'; 
-    header.style.color = '#fff'; 
+    header.style.color = 'back'; 
     header.style.padding = '20px';
-    header.style.marginTop = '-50px'; 
+    header.style.marginTop = '-50px';
+    header.style.fontWeight = 'bold';
     
     contactInfoElement.appendChild(header);
 
@@ -116,7 +117,7 @@ function displayContactInfo(methodName, value) {
             const callIcon = document.createElement('i');
             callIcon.classList.add('fa', 'fa-solid', 'fa-square-phone');
             callIcon.style.fontSize = '30px';
-            callIcon.style.color = '#f7f7f7';
+            callIcon.style.color = 'black';
             callIcon.style.marginRight = '20px';
 
             const textIconContainer = document.createElement('div');
@@ -126,18 +127,18 @@ function displayContactInfo(methodName, value) {
             const telegramIcon = document.createElement('i');
             telegramIcon.classList.add('fa', 'fa-brands', 'fa-telegram');
             telegramIcon.style.fontSize = '27px';
-            telegramIcon.style.color = '#f7f7f7';
+            telegramIcon.style.color = 'black';
             telegramIcon.style.marginRight = '20px';
         
             const contactNumber = document.createElement('p');
             contactNumber.textContent = ` ${value}`;
             contactNumber.style.fontSize = '25px';
-            contactNumber.style.color = '#fff';
+            contactNumber.style.color = 'black';
         
             const contactvoiceNumber = document.createElement('p');
             contactvoiceNumber.textContent = value;
             contactvoiceNumber.style.fontSize = '25px';
-            contactvoiceNumber.style.color = '#fff';
+            contactvoiceNumber.style.color = 'black';
         
             callContainer.appendChild(callIcon);
             callContainer.appendChild(contactNumber);
@@ -160,7 +161,7 @@ function displayContactInfo(methodName, value) {
             const whatsappicon = document.createElement('i');
             whatsappicon.classList.add('fa', 'fa-brands', 'fa-square-whatsapp');
             whatsappicon.style.fontSize = '27px';
-            whatsappicon.style.color = '#f7f7f7';
+            whatsappicon.style.color = 'black';
             whatsappicon.style.marginRight = '20px';
 
             const voiceIconContainer = document.createElement('div');
@@ -170,18 +171,18 @@ function displayContactInfo(methodName, value) {
             const voiceIcon = document.createElement('i');
             voiceIcon.classList.add('fa', 'fa-solid', 'fa-video');
             voiceIcon.style.fontSize = '27px';
-            voiceIcon.style.color = '#f7f7f7';
+            voiceIcon.style.color = 'black';
             voiceIcon.style.marginRight = '20px';
 
             const whatsappNumber = document.createElement('p');
             whatsappNumber.textContent = value;
             whatsappNumber.style.fontSize = '25px';
-            whatsappNumber.style.color = '#fff';
+            whatsappNumber.style.color = 'black';
 
             const videoCallNumber = document.createElement('p');
             videoCallNumber .textContent = value;
             videoCallNumber .style.fontSize = '25px';
-            videoCallNumber .style.color = '#fff';
+            videoCallNumber .style.color = 'black';
             
             msgContainer.appendChild( whatsappicon);
             msgContainer.appendChild(whatsappNumber);
@@ -199,13 +200,13 @@ function displayContactInfo(methodName, value) {
             const mailicon = document.createElement('i');
             mailicon.classList.add('fas', 'fa-envelope-open-text'); 
             mailicon.style.fontSize = '31px';
-            mailicon.style.color = '#f7f7f7';
+            mailicon.style.color = 'black';
             mailicon.style.marginRight = '20px';
         
             const emailText = document.createElement('span'); 
             emailText.textContent = value;
             emailText.style.fontSize = '23px';
-            emailText.style.color = '#fff';
+            emailText.style.color = 'black';
         
             emailAddress.appendChild(mailicon);
             emailAddress.appendChild(emailText);
@@ -218,12 +219,11 @@ function displayContactInfo(methodName, value) {
 }
 
 
-
 function displayContactNumber(contactNumber) {
     clearContactInfo();
     displayContactInfo('Call', contactNumber); 
     const iconElement = event.currentTarget; // retrieve the clicked icon element & gives refernce to clicked ele
-    setActiveIcon(iconElement); // update active icon
+    setActiveIcon(iconElement);
 }
 
 function displayMessage(message) {
@@ -245,13 +245,13 @@ function setActiveIcon(iconElement) {
     if (activeIcon) { 
         activeIcon.classList.remove('active-icon');  // Remove the 'active-icon' class from the previous active icon
     }
-
-                                                
+                                 
     iconElement.classList.add('active-icon');    // Add the 'active-icon' class to the clicked icon
 
     
     activeIcon = iconElement; // Update the activeIcon variable 
 }
+
 
 function clearContactInfo() {
     const contactInfoElements = document.querySelectorAll('.contact-details');
@@ -281,8 +281,7 @@ function toogleDropdownMenu(){
     else{
             dropdownMenu.style.display = "block";
             menuIcon.style.display = "none";
-            closeIcon.style.display = "block"
-
+            closeIcon.style.display = "block";
     }
 }
 

@@ -386,9 +386,9 @@ h3{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #f6859b;
+    background-color: #fff;
     width: 400px;
-    height: 250px;
+    height: 280px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -431,7 +431,7 @@ h3{
 }
 .menu-container .close-icon{
     display: none;
-    margin: 10px 5px 10px 170px;
+    margin: 10px 5px 10px 200px;
     font-size:2.1rem;
     color: #984063;
     cursor: pointer;
@@ -481,4 +481,52 @@ h3{
   font-size: 2rem;
   margin-right: 50px;
   color: #f7f7f7;
+}
+
+@media screen and (max-width:768px) {
+    .container{
+        flex-direction: column;
+    }
+
+    .list_container {
+        width: 100%;
+    }
+    .search{
+        width: 100%;
+        margin: 10px;
+    }
+    .search input{
+        width: 100%;
+        margin-left: 0;
+    }
+    .head{
+        margin: 20px;
+    }
+    .contact-list-container{
+        height: auto;
+    }
+    .add-icon-container{
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+    }
+    .add-icon-container ion-icon{
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .alphabet{
+        margin-left: 20px;
+    }
+    ul li{
+        margin-left: 20px;
+    }
+    .noResult{
+        margin-left: 20px;
+    }
+   .contact-details.show-background{
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+   }
 }
