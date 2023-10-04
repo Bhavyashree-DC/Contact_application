@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact_Application</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="list_container">
+            <div class="search">
+                <ion-icon class="search_bar" name="search-outline"></ion-icon>
+                <input type="search" id = "searchInput" placeholder="Search">    
+            </div>
+            <div class="head">
+               <h4>All Contacts</h4> 
+            </div>
+            <div class="contact-list-container">
+                <div class="contact-list"></div>
+                <div class="add-icon-container">
+                    <ion-icon name="add-circle-sharp" onclick="openAddContactForm()"></ion-icon> 
+                </div>
+ 
+                <div class ="noResult" id="noResultsFound" style="display: none;">
+                    No results found.
+                </div>
+
+            </div>       
+        </div>
+
+
+        <div id="addContactForm" class="form-container" style="display: none;">
+            <form onsubmit="submitContactForm(); return false;">
+            
+                <ion-icon class='add-close-icon' name="close-circle" onclick="closeAddContactForm()"></ion-icon>
+
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" id="name" class="form-input" required><br>
+                    
+                    <label for="contactNo" class="form-label" >ContactNumber</label>
+                    <input type="text" id="contactNo" class="form-input" required><br>
+
+
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="text" id="email" class="form-input" required><br>
+
+                    <label for="whatsappNo" class="form-label">whatsapp Number:</label>
+                    <input type="text" id="whatsappNo" class="form-input" required><br>
+                
+                    <label for="imageSrc" class="form-label">Image Source:</label>
+                    <input type="text" id="imageSrc" class="form-input">
+
+                    <button type="submit" class = "form-submit">ADD</button>
+
+            </form>   
+        </div>
+
+        
+        <div class="contact_container" style="display: none;">
+            <div class="details">
+                <ion-icon class='back_arrow' name="chevron-back"></ion-icon>
+                <ion-icon class="star-icon" name="star"></ion-icon>
+                <ion-icon class='menu' name="menu"></ion-icon>
+            </div>
+
+            <div class="connect_details icons">
+                <div class="phone">
+                    <ion-icon name="call"></ion-icon>
+                    <h5>Call</h5>
+                </div>
+                <div class="message">
+                    <ion-icon name="chatbubble-ellipses"></ion-icon>
+                    <h5>Message</h5>
+                </div>
+            
+                <div class="mail">
+                    <ion-icon name="mail"></ion-icon>
+                    <h5>Mail</h5>
+                </div>
+            </div>
+            
+            <div class="contact-details">
+                <p class="contact-number"></p>
+                <p class="whatsapp-number"></p>
+                <p class="email-address"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
